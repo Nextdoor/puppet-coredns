@@ -28,4 +28,13 @@ class coredns::install (
     managehome => false,
     home       => '/nonexistent',
   }
+
+  file { "${coredns::install_dir}/coredns-resolv.sh":
+    ensure  => file,
+    owner   => root,
+    group   => root,
+    mode    => '0755',
+    source  => "puppet:///modules/coredns/coredns-resolv.sh",
+    require => Archive["/tmp/coredns-${coredns::version}.tgz"];
+  }
 }

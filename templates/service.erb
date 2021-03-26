@@ -12,6 +12,8 @@ AmbientCapabilities=CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
 User=coredns
 ExecStart=<%= scope.lookupvar('coredns::install_dir') %>/coredns -conf=<%= scope.lookupvar('coredns::config_dir') %>/Corefile
+ExecStartPost=<%= scope.lookupvar('coredns::install_dir') %>/coredns-resolv.sh start
+ExecStopPost=<%= scope.lookupvar('coredns::install_dir') %>/coredns-resolv.sh stop
 ExecReload=/bin/kill -SIGUSR1 $MAINPID
 Restart=on-failure
 
