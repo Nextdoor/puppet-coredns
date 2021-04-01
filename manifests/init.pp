@@ -4,6 +4,7 @@ class coredns(
   Stdlib::Absolutepath $install_dir = '/opt',
   Stdlib::Absolutepath $config_dir = '/etc/coredns',
   String $user = 'coredns',
+  Boolean $enabled = true,
 ) {
 
   case $::architecture {

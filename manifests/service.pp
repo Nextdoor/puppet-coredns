@@ -4,10 +4,8 @@
 #
 # @example
 #   include coredns::service
-class coredns::service (
-  Boolean $enabled  = true
-){
-  if $enabled {
+class coredns::service {
+  if $coredns::enabled {
     $_service_ensure = running
     $_service_enable = true
   } else {
